@@ -47,22 +47,43 @@
       text-decoration: none;
       color: #222;
       font-weight: 500;
-      transition: color 0.3s ease;
-    }
-
-    .navbar nav a:hover {
-      color: #000;
     }
 
     /* ===== Hero ===== */
     .hero {
       height: 100vh;
+      position: relative;
+      overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
       background: linear-gradient(120deg, #f5f5f5, #eaeaea);
       text-align: center;
       padding: 0 20px;
+    }
+
+    /* Translucent background image */
+    .hero-bg {
+      position: absolute;
+      width: 70%;
+      height: 70%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0.1;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
     }
 
     .hero h1 {
@@ -83,6 +104,7 @@
       border-radius: 50%;
       object-fit: cover;
       margin-bottom: 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
     }
 
     /* ===== Sections ===== */
@@ -148,10 +170,6 @@
       color: white;
     }
 
-    .primary-btn:hover {
-      background: #000;
-    }
-
     .secondary-btn {
       background: transparent;
       border: 1px solid #222;
@@ -192,6 +210,11 @@
       .hero h1 {
         font-size: 2.3rem;
       }
+
+      .hero-bg {
+        width: 90%;
+        height: 60%;
+      }
     }
   </style>
 </head>
@@ -210,12 +233,16 @@
 
   <!-- ===== Hero ===== -->
   <section id="home" class="hero">
-    <div class="fade-in">
-      <img src="C:\Users\Vivek Kapoor\Pictures\fingerprint jpeg.jpg" alt="Profile" class="hero-image">
+
+    <!-- Translucent background image -->
+    <div class="hero-bg">
+      <img src="img.jpg" alt="Background shape">
+    </div>
+
+    <div class="hero-content fade-in">
+      <img src="pexels-nemuel-6424589.jpg" alt="Profile" class="hero-image">
       <h1>My Website</h1>
-      <p>
-        This is my website where you can find all about me.
-      </p>
+      <p>This is my website where you can find all about me.</p>
       <button class="primary-btn">Get Started</button>
     </div>
   </section>
@@ -224,28 +251,26 @@
   <section id="about" class="section">
     <div class="container fade-in">
       <h2>About Me</h2>
-      <p>
-        I am Shaurya Kapoor, a student in Delhi Public School Ghaziabad Meerut Road
-      </p>
+      <p>I am Shaurya Kapoor, a student of Delhi Public School Ghaziabad Meerut Road.</p>
     </div>
   </section>
 
-  <!-- ===== Services ===== -->
+  <!-- ===== Projects ===== -->
   <section id="services" class="section light">
     <div class="container fade-in">
       <h2>My Projects</h2>
       <div class="cards">
         <div class="card">
           <h3>Scratch</h3>
-          <p>I started scratch when I was 8 years old and have made over 273 projects in scratch.</p>
+          <p>I started Scratch when I was 8 and have made over 273 projects.</p>
         </div>
         <div class="card">
           <h3>Python</h3>
-          <p>I have made multiple ML projects, tools and games in Python.</p>
+          <p>I have made multiple ML projects, tools, and games.</p>
         </div>
         <div class="card">
           <h3>Blender</h3>
-          <p>I have made 3d animations and models in Blender.</p>
+          <p>I have made 3D animations and models.</p>
         </div>
       </div>
     </div>
@@ -255,22 +280,21 @@
   <section id="contact" class="section">
     <div class="container fade-in">
       <h2>Contact</h2>
-      <p> - </p>
+      <p>-</p>
       <button class="secondary-btn">Contact</button>
     </div>
   </section>
 
   <!-- ===== Footer ===== -->
   <footer>
-    <p>© 2026 Shaurya Kapoor All rights reserved.</p>
+    <p>© 2026 All rights reserved.</p>
   </footer>
 
   <script>
-    // Fade-in animation on scroll
     const fadeElements = document.querySelectorAll(".fade-in");
 
     const observer = new IntersectionObserver(
-      (entries) => {
+      entries => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add("visible");
@@ -285,4 +309,3 @@
 
 </body>
 </html>
-
